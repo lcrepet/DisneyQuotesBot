@@ -1,0 +1,5 @@
+fr:
+  help: Aide.
+  welcome_0: Bonjour %{name} !
+  welcome_1: Bonjour %{name} !
+  welcome_2: Bonjour %{name} !
