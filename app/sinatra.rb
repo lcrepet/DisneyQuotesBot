@@ -5,7 +5,7 @@ require './app/clarke'
 puts "Clarke version : #{Clarke::VERSION}"
 puts "ClarkeMessenger version : #{Clarke::Messenger::VERSION}"
 
-class NexityAgent_Bot < Sinatra::Base
+class DisneyBot < Sinatra::Base
   configure :production, :development do
     enable :logging
   end
