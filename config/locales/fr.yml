@@ -3,3 +3,6 @@ fr:
   welcome_0: Bonjour %{name} !
   welcome_1: Bonjour %{name} !
   welcome_2: Bonjour %{name} !
+  you_win: Gagné !
+  you_lose: Perdu...
+  try_again: Essaye encore une fois !
