@@ -30,6 +30,7 @@ class Quiz < Scenario
 
     if waiting_for_response?
       parameters['response'] = formatted_user_input
+      parameters['nb_attempts'] ||= 0
       parameters['nb_attempts'] += 1
     end
 
