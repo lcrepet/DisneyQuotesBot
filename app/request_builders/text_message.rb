@@ -10,7 +10,7 @@ module Clarke::RequestsBuilder::TextMessage
       actions << Clarke::ActionRequest.new('welcome', event) if user.sessions.empty?
 
       scenario = start_or_find_scenario(user)
-      scenario.make_sense_of(event.action)
+      scenario.make_sense_of(event.text)
 
       actions << Clarke::ActionRequest.new('quiz', event, scenario.parameters)
     end
