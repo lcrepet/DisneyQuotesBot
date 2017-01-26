@@ -12,9 +12,7 @@ module Clarke::ActionController
 
   action 'welcome' do
     sender = options[:event].sender
-    user = User.find_by(messenger_id: sender)
-
-    Clarke::Response.new(sender, { text: get_sentence(name: 'welcome', params: { name: user.first_name }) })
+    Clarke::Response.new(sender, { text: I18n.t(:welcome) })
   end
 
   class << self
