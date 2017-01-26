@@ -1,5 +1,7 @@
 fr:
   help: Aide.
-  welcome_0: Bonjour %{name} !
-  welcome_1: Bonjour %{name} !
-  welcome_2: Bonjour %{name} !
+  welcome: Bonjour !
+  you_win: Gagné !
+  you_lose: Perdu...
+  try_again: Essaye encore une fois !
+  want_to_replay: Tu veux rejouer ?
