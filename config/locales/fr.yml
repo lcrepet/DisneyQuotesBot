@@ -2,6 +2,6 @@ fr:
   help: Aide.
   welcome: Bonjour !
   you_win: Gagné !
-  you_lose: Perdu...
+  you_lose: Perdu... C'était %{answer} !
   try_again: Essaye encore une fois !
   want_to_replay: Tu veux rejouer ?
