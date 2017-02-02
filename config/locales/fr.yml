@@ -5,3 +5,5 @@ fr:
   you_lose: Perdu... C'était %{answer} !
   try_again: Essaye encore une fois !
   want_to_replay: Tu veux rejouer ?
+  not_sure: Je ne suis pas sûre d'avoir compris, mais je vais prendre ça pour un non...
+  next_time: Dis-moi quand tu veux rejouer !

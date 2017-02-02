@@ -42,6 +42,7 @@ module Clarke::ActionController
     def react_to_result(quote, scenario)
       return send_clue(quote, scenario) if scenario.waiting_for_clue?
 
+      Continue.create(session: scenario.session)
       return [ { text: I18n.t(:you_lose, answer: quote.movie.title_fr ) }, { text: I18n.t(:want_to_replay) }] if scenario.parameters['result'] == 'false'
       [ { text: I18n.t(:you_win) }, { text: I18n.t(:want_to_replay) }]
     end

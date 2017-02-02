@@ -12,7 +12,7 @@ module Clarke::RequestsBuilder::TextMessage
       scenario = start_or_find_scenario(user)
       scenario.make_sense_of(event.text)
 
-      actions << Clarke::ActionRequest.new('quiz', event, scenario.parameters)
+      actions << Clarke::ActionRequest.new(scenario.class.name.downcase, event, scenario.parameters)
     end
 
     def start_or_find_scenario(user)
