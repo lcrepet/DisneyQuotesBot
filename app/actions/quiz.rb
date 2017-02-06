@@ -51,13 +51,13 @@ module Clarke::ActionController
       scenario.update_parameters(clue: 1)
       scenario.update_next_step
 
-      clue = GifSearch.request(quote.movie.title_en.downcase)
+      clue = GifSearch.get_random_gif_from(quote.movie.title_en.downcase)
 
       [
         {
           text: I18n.t(:try_again),
           image: {
-            url: clue[:gif_url]
+            url: clue
           }
         }
       ]
