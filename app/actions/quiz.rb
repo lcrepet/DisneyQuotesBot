@@ -16,14 +16,14 @@ module Clarke::ActionController
     def quiz_responses(scenario)
       return ask_question(scenario) if scenario.started?
       return compute_result(scenario) if scenario.waiting_for_result?
+      []
     end
 
     def ask_question(scenario)
-      quote_id = rand(Quote.count)
-      quote = Quote.find(quote_id)
+      quote = Quote.limit(1).order("RANDOM()").first
       return unless quote
 
-      scenario.update_parameters(quote: quote_id)
+      scenario.update_parameters(quote: quote.id)
       scenario.update_next_step
       [ { text: quote.line }]
     end
