@@ -16,14 +16,14 @@ module Clarke::ActionController
     def quiz_responses(scenario)
       return ask_question(scenario) if scenario.started?
       return compute_result(scenario) if scenario.waiting_for_result?
+      []
     end
 
     def ask_question(scenario)
-      quote_id = rand(Quote.count)
-      quote = Quote.find(quote_id)
+      quote = Quote.limit(1).order("RANDOM()").first
       return unless quote
 
-      scenario.update_parameters(quote: quote_id)
+      scenario.update_parameters(quote: quote.id)
       scenario.update_next_step
       [ { text: quote.line }]
     end
@@ -42,7 +42,8 @@ module Clarke::ActionController
     def react_to_result(quote, scenario)
       return send_clue(quote, scenario) if scenario.waiting_for_clue?
 
-      return [ { text: I18n.t(:you_lose) }, { text: I18n.t(:want_to_replay) }] if scenario.parameters['result'] == 'false'
+      Continue.create(session: scenario.session)
+      return [ { text: I18n.t(:you_lose, answer: quote.movie.title_fr ) }, { text: I18n.t(:want_to_replay) }] if scenario.parameters['result'] == 'false'
       [ { text: I18n.t(:you_win) }, { text: I18n.t(:want_to_replay) }]
     end
 
@@ -50,13 +51,13 @@ module Clarke::ActionController
       scenario.update_parameters(clue: 1)
       scenario.update_next_step
 
-      clue = GifSearch.request(quote.movie.title_en.downcase)
+      clue = GifSearch.get_random_gif_from(quote.movie.title_en.downcase)
 
       [
         {
           text: I18n.t(:try_again),
           image: {
-            url: clue[:gif_url]
+            url: clue
           }
         }
       ]
